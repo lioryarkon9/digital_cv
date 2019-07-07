@@ -1,0 +1,1 @@
+export const SET_APP_VIEW = 'SET_APP_VIEW';

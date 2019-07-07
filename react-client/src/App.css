@@ -1,0 +1,26 @@
+#AppWrapper {
+    background-color: #191a1a;
+    height: 100vh;
+    color: #e5e5e5;
+}
+
+#header {
+    height: 10vh;
+    background-color: #808080;
+    color: #fff;
+}
+#header #name {
+    font-size: 1.8em;
+}
+#header #title {
+    font-size: 1.4em;
+}
+
+@media only screen and (max-width: 600px) {
+    #header #name {
+        font-size: 0.7em;
+    }
+    #header #title {
+        font-size: 0.6em;
+    }
+}
