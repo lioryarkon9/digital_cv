@@ -1,0 +1,44 @@
+#HomeView .cv-section {
+    box-shadow: 0 0 2px 0 #808080;
+}
+
+#HomeView .margin-top-3 {
+    margin-top: 3%;
+}
+
+.img-cropper {
+    height: 200px;
+    width: 200px;
+    background-color: #eae9ee;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.img-cropper img {
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+}
+
+.cv-section > .title {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+#experience-div .item .title, #education-div .item .title {
+    font-weight: bold;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .img-cropper {
+        height: 90px;
+        width: 90px;
+    }
+    .img-cropper img {
+        height: 90px;
+        width: 90px;
+    }
+    #about-me {
+        font-size: 0.8em;
+    }
+}

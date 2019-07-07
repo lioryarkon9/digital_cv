@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setAppView} from './actions/appSettings';
-import AppWrapper from './views/AppWrapper';
+import HomeView from './views/Home';
 
 
 class Root extends React.Component {
@@ -13,7 +13,7 @@ class Root extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <Route exact path={'/'} component={AppWrapper}/>
+                    <Route exact path={'/'} component={HomeView}/>
                     <Route path={'*'} component={(browserStuff) => <h2>Error: Page Not Found</h2>}/>
                 </Switch>
             </Router>

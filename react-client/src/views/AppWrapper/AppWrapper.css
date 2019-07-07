@@ -1,6 +1,6 @@
 #AppWrapper {
     background-color: #191a1a;
-    height: 100vh;
+    min-height: 100vh;
     color: #e5e5e5;
 }
 
@@ -14,6 +14,10 @@
 }
 #header #title {
     font-size: 1.4em;
+}
+
+#body {
+    padding: 1% 0% 1% 0%;
 }
 
 @media only screen and (max-width: 600px) {
