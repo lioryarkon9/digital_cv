@@ -20,6 +20,10 @@
     padding: 1% 0% 1% 0%;
 }
 
+#AppWrapper #header .arrow {
+    width: 15px;
+}
+
 @media only screen and (max-width: 600px) {
     #header #name {
         font-size: 0.7em;

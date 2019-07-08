@@ -33,8 +33,9 @@ class App extends React.Component {
     }
     render () {
         return (
-            <AppWrapper>
-                
+            <AppWrapper
+                prevAppUrl={'./'}          
+            >
                 <CourseCartWrapper
                     numItemsInCart={this.state.SelectedCourses.length}
                 >

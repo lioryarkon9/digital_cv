@@ -35,7 +35,7 @@ const HomeView = props => {
                                 <Col xs={8} id='about-me'>
                                     <div>About Me</div>
                                     <p>
-                                        Enthusiastic about technologies in general and user inerfaces in particular, huge basketball fan, I lova dogs, and I teach English in my spare time    
+                                        Enthusiastic about technologies in general and user inerfaces in particular, huge basketball fan, I love dogs, and I teach English in my spare time    
                                     </p>
                                     <div id='contact'>
                                         <div>Contact</div>
