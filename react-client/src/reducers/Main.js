@@ -7,15 +7,12 @@ const InitState = {
 
 
 const MainReducer = function (state = InitState, action) {
-    let prevState;
     switch (action.type) {
         case SET_APP_VIEW:
-            prevState = Object.assign({}, state);
-            if (window.innerWidth > MAX_MOBILE_VIEW) {
-                prevState.appView = DESKTOP;
+            return {
+                ...state,
+                appView: window.innerWidth > MAX_MOBILE_VIEW ? DESKTOP : MOBILE
             }
-
-            return prevState;
         default:
             return state;
     }
