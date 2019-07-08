@@ -1,0 +1,9 @@
+.SubUrlSelector {
+    box-shadow: 0 0 2px 0 #fff;
+    padding-left: 1%;
+    cursor: pointer;
+}
+.SubUrlSelector a {
+    text-decoration: none;
+    color: inherit;
+}

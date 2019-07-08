@@ -1,6 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {URL_COURSE_CART_VIEW} from '../../../consts';
+import SubUrlSelector from '../../../components/SubUrlSelector';
 
 
 const DesktopSideBar = props => {
@@ -8,7 +8,13 @@ const DesktopSideBar = props => {
         <div>
             <div>Explore Projects</div>
             <div>
-                <Link to={URL_COURSE_CART_VIEW}>CourseCartApp</Link>
+                <SubUrlSelector
+                    mainPath='CourseCartApp'
+                    subPaths={[
+                        {value: URL_COURSE_CART_VIEW, label: 'view as sub app'},
+                        {value: 'https://bitbucket.org/lysoftware/course_cart/src/master/', label: 'view code', isNewTab: true}
+                    ]}
+                />
             </div>
         </div>
     );
