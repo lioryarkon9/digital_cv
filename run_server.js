@@ -13,7 +13,7 @@ const Server = App.listen(process.env.PORT || 5000, function () {
     console.info('digital_cv listening at http://%s:%s', host, port);
 });
 
-App.get('/', function (req, res) {
+App.get('*', function (req, res) {
     res.sendFile(__dirname + '/react-client/build/index.html');
 });
 
