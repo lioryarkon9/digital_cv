@@ -1,0 +1,16 @@
+
+#Cart #CartBody {
+    box-shadow: 0 0 2px 0;
+    background-color: #c7c3c3;
+}
+
+#CartBody .cart-item {
+    font-size: 0.8em;
+    box-shadow: 0 0 1px 0;
+}
+
+@media only screen and (max-width: 600px) {
+    #Cart {
+        margin-bottom: 2%;
+    }
+}

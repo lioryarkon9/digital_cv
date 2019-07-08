@@ -1,0 +1,26 @@
+.SingleCourse {
+    padding: 1%;
+    box-sizing: border-box;
+}
+.SingleCourse .CourseContainer {
+    background-color: #f1e9e9;
+    box-shadow: 0 0 2px 0;
+    border-radius: 5px;
+}
+
+.CourseContainer .remove-course {
+    margin-right: 2px;
+}
+.CourseContainer .add-course {
+    margin-left: 2px;
+}
+.CourseContainer .content {
+    height: 10vh;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+    .SingleCourse {
+        padding: 0 0 6% 0;
+    }
+}

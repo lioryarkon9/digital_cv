@@ -3,7 +3,7 @@ import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setAppView} from './actions/appSettings';
 import HomeView from './views/Home';
-import CourseCartApp from './views/CourseCart';
+import CourseCartApp from './views//CourseCartApp';
 import {URL_COURSE_CART_VIEW} from './consts';
 
 
