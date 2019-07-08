@@ -29,6 +29,36 @@
 }
 
 
+#about-me #contact {
+    -webkit-animation-name: contact-animation; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 5s; /* Safari 4.0 - 8.0 */
+    animation-name: contact-animation;
+    animation-duration: 5s;
+}
+
+/* --Contact Animation-- */
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes contact-animation {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+  
+/* Standard syntax */
+@keyframes contact-animation {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+/* ----- END ----- */
+
+
 @media only screen and (max-width: 600px) {
     .img-cropper {
         height: 90px;

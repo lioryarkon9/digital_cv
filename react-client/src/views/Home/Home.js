@@ -35,8 +35,16 @@ const HomeView = props => {
                                 <Col xs={8} id='about-me'>
                                     <div>About Me</div>
                                     <p>
-                                        Huge basketball fan,  I love dogs, I teach English when I have time,  and I’m enthusiastic about Javascript
+                                        Enthusiastic about technologies in general and user inerfaces in particular, huge basketball fan, I lova dogs, and I teach English in my spare time    
                                     </p>
+                                    <div id='contact'>
+                                        <div>Contact</div>
+                                        <div>
+                                            <b>
+                                                050-898-0708 || lioryarkon9@gmail.com
+                                            </b>
+                                        </div> 
+                                    </div>
                                 </Col>
                             </Row>
                             {props.appView === MOBILE ? 
