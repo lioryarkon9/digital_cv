@@ -17,7 +17,7 @@ App.get('*', function (req, res) {
     res.sendFile(__dirname + '/react-client/build/index.html');
 });
 
-App.get('/get_courses', async function (req, res) {
+App.post('/get_courses', async function (req, res) {
     let processRes = null;
     const Courses = await getCourses();
     if (Courses.status) {

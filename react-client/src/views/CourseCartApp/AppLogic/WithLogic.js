@@ -28,7 +28,9 @@ const WithLogic = App => {
             }
         }
         getCoursees () {
-            return fetch('/get_courses')
+            return fetch('/get_courses', {
+                method: 'POST'
+            })
             .then(handleFetchErrors)
             .then(httpRes => httpRes.json())
             .catch(err => {
