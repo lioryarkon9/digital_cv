@@ -1,13 +1,10 @@
 import React from 'react';
 import AppWrapper from '../AppWrapper';
-import {connect} from 'react-redux';
 import {Container, Row, Col} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
-import {URL_COURSE_CART_VIEW} from '../../consts';
 import './Home.css';
 import MY_PIC from '../../assets/my_pic.jpg';
-import {MOBILE, DESKTOP} from '../../consts';
-import NavBar from './NavBar';
+import NavbarContainer from '../../containers/Navbar';
+import ExploreProjectsContainer from '../../containers/ExploreProjects';
 
 
 const HomeView = props => {
@@ -15,11 +12,7 @@ const HomeView = props => {
         <AppWrapper>
             <Container>
                 <Row>
-                    {props.appView === DESKTOP ?
-                        <Col xs={2}>
-                            <NavBar/>
-                        </Col>
-                    : null}
+                    <NavbarContainer/>
                     <Col>
                         <Container id='HomeView'>
                             <Row>
@@ -47,15 +40,9 @@ const HomeView = props => {
                                     </div>
                                 </Col>
                             </Row>
-                            {props.appView === MOBILE ? 
-                                <Row className='margin-top-3'>
-                                    <Col className='text-center'>
-                                        <Link to={URL_COURSE_CART_VIEW}>
-                                            Explore Projects
-                                        </Link>
-                                    </Col>
-                                </Row>
-                            : null}
+
+                            <ExploreProjectsContainer/>
+
                             <Row className='margin-top-3'>
                                 <Col className='cv-section'>
                                     <div className='title'>Skills</div>
@@ -141,10 +128,4 @@ const HomeView = props => {
     );
 }
 
-const MapStateToProps = state => {
-    return {
-        appView: state.appView
-    }
-}
-
-export default connect(MapStateToProps)(HomeView);
+export default HomeView;
