@@ -2,6 +2,7 @@ import React from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import AppWrapper from '../AppWrapper';
 import {URL_COURSE_CART_VIEW} from '../../consts';
+import GridViewContainer from '../../containers/RaimenWarsApp/Grid';
 
 
 class RaimenWarsApp extends React.Component {
@@ -11,7 +12,7 @@ class RaimenWarsApp extends React.Component {
                 prevAppUrl={URL_COURSE_CART_VIEW}
             >
                 <div id='RaimenWarsApp'>
-                    <Container>GridView</Container>
+                    <GridViewContainer/>
                     <Container>
                         <Row>
                             <Col>Action1</Col>
