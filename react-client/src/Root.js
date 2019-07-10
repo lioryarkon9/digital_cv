@@ -1,7 +1,5 @@
 import React from 'react';
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {setAppView} from './actions/appSettings';
 import HomeView from './views/Home';
 import CourseCartApp from './views//CourseCartApp';
 import {URL_COURSE_CART_VIEW} from './consts';
@@ -27,10 +25,4 @@ class Root extends React.Component {
     }
 }
 
-const MapDispatchToProps = dispatch => {
-    return {
-        setAppView: () => dispatch(setAppView())
-    }
-}
-
-export default connect(null, MapDispatchToProps)(Root);
+export default Root;

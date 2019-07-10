@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Root from './Root';
+import RootContainer from './containers/Root';
 import MainReducer from './reducers/Main';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
@@ -13,7 +13,7 @@ window.mockStore = Store;
 
 ReactDOM.render(
     <Provider store={Store}>
-        <Root/>
+        <RootContainer/>
     </Provider>, 
     document.getElementById('root')
 );
