@@ -8,9 +8,11 @@ function isWithinRange (value, min, max) {
 }
 
 export function getCellNeighbours (xPos, yPos, xMax, yMax) {
-    // xPos = 0; yPos = 0
-    // const MAX_NEIGHBOURS = 8; // a single cell cannot have more than 8 cells around it
-    // const MIN_NEIGHBOURS = 2; // a corner cell will have only 3 neighbours
+    // This function takes the current SingleCell object's coordinates and their max possible
+    // values (the min. is 0) and returns an array of its neigbours' coordinates.
+
+    // The assumption is that every cell has max 8 neighbours (think of an Excel sheet cell)
+    // and if it is near the borders (e.g. the first or last in row/col then it has less) 
 
     const XPlus1 = xPos + 1;
     const YPlus1 = yPos + 1;
@@ -28,8 +30,8 @@ export function getCellNeighbours (xPos, yPos, xMax, yMax) {
 
     let neighbours = [Opt1, Opt2, Opt3, Opt4, Opt5, Opt6, Opt7, Opt8];
 
-    neighbours = neighbours.filter(item => {
-        let cond = true;
+    neighbours = neighbours.filter(item => { 
+        // filtering out the coordinates which aren't in proper range
         if (!isWithinRange(item.x, 0, xMax)) {
             return false;
         }
@@ -37,7 +39,7 @@ export function getCellNeighbours (xPos, yPos, xMax, yMax) {
             return false;
         }
 
-        return cond;
+        return true;
     });
 
     return neighbours;

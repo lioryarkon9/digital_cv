@@ -23,8 +23,8 @@ export function RaimenWarsReducer (state = InitState, action) {
                 }
             }
 
-            if (!prevStep) prevStep = Grid;
-            else {
+            if (!prevStep) prevStep = Grid;// if it's the first step
+            else { // else than add it to the linked list
                 let tmp = prevStep;
                 tmp.prev = Grid;
                 Grid.next = tmp;
