@@ -2,6 +2,7 @@ import React from 'react';
 import {NUM_ROWS, NUM_CELLS_IN_ROW} from '../../../../consts';
 import SingleCell from '../../components/SingleCell';
 import './Grid.css';
+import {Container, Row, Col, Button} from 'react-bootstrap';
 
 // This view displays a SingleStep (the current one)
 
@@ -33,10 +34,31 @@ class GridView extends React.Component {
         }
     }
     render () {
-        console.info('this.props: ', this.props);
-        console.info('getLocationsWrappedInRows: ', this.getLocationsWrappedInRows());
         return (
             <div className='RaimenGrid'>
+                <Container>
+                    <Row>
+                        <Col xs={2}>
+                            <Button 
+                                variant="secondary" 
+                                size='sm' 
+                                onClick={this.props.clearCity}
+                            >
+                                Clear city
+                            </Button>
+                        </Col>
+                        <Col xs={2}>
+                            <Button 
+                                variant="secondary" 
+                                size='sm' 
+                                onClick={this.props.randomizeCity}
+                            >
+                                Ranomize city
+                            </Button>
+                        </Col>
+                    </Row>
+                </Container>
+                <br/>
                 {this.getLocationsWrappedInRows().map((row, i) => (
                     <div key={'_row-' + i} className='d-flex justify-content-around margin-bot-1'>
                         {row.map(cell => (

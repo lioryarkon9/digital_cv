@@ -1,8 +1,14 @@
-import {RANDOMIZE_CITY} from '../consts/actionNames';
+import {RANDOMIZE_CITY, CLEAR_CITY} from '../consts/actionNames';
 
 
 export function randomizeCity () {
     return {
         type: RANDOMIZE_CITY
+    }
+}
+
+export function clearCity () {
+    return {
+        type: CLEAR_CITY
     }
 }

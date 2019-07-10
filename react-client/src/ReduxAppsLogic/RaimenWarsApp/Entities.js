@@ -10,6 +10,12 @@ export class SingleCell {
         this.neighbours = neighbours ? neighbours : [];
         this.id = Coordinates ? JSON.stringify(Coordinates) : '';
     }
+    openStore () {
+        this.isStoreExist = true;
+    }
+    shutDownStore () {
+        this.isStoreExist = false;
+    }
 }
 
 export class SingleStep {

@@ -1,7 +1,7 @@
 import React from 'react';
 import GridView from '../../views/RaimenWarsApp/views/Grid';
 import {connect} from 'react-redux';
-import {randomizeCity} from '../../actions/RaimenWars';
+import {randomizeCity, clearCity} from '../../actions/RaimenWars';
 import {DESKTOP} from '../../consts';
 import {Container} from 'react-bootstrap';
 
@@ -21,7 +21,8 @@ const MapStateToProps = state => {
 
 const MapDispatchToProps = dispatch => {
     return {
-        randomizeCity: () => dispatch(randomizeCity())
+        randomizeCity: () => dispatch(randomizeCity()),
+        clearCity: () => dispatch(clearCity())
     }
 }
 
@@ -36,6 +37,7 @@ const GridContainer = props => {
         return (
             <GridView
                 randomizeCity={props.randomizeCity}
+                clearCity={props.clearCity}
                 AllLocations={props.AllLocations}
             />
         );

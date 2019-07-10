@@ -1,5 +1,5 @@
 import {PAUSED, IN_PROGRESS, NUM_CELLS_IN_ROW, NUM_ROWS} from '../consts';
-import {RANDOMIZE_CITY} from '../consts/actionNames';
+import {RANDOMIZE_CITY, CLEAR_CITY} from '../consts/actionNames';
 import {SingleCell, SingleStep} from '../ReduxAppsLogic/RaimenWarsApp/Entities';
 import {getCellNeighbours} from '../ReduxAppsLogic/RaimenWarsApp/utils';
 
@@ -9,9 +9,10 @@ const InitState = {
 }
 
 export function RaimenWarsReducer (state = InitState, action) {
+    let prevStep;
     switch (action.type) {
         case RANDOMIZE_CITY:
-            let prevStep = state.AllSteps.head;
+            prevStep = state.AllSteps.head;
             const Grid = new SingleStep();
             for (let row = 0; row < NUM_ROWS; row++) {
                 //row = 0
@@ -35,7 +36,20 @@ export function RaimenWarsReducer (state = InitState, action) {
                 ...state,
                 AllSteps: {head: prevStep}
             }
+        case CLEAR_CITY:
+            prevStep = state.AllSteps.head;
+            const ClearedLocations = prevStep.AllLocations.map(item => {
+                item.shutDownStore();
+
+                return item;
+            });
             
+            prevStep.AllLocations = ClearedLocations;
+
+            return {
+                ...state,
+                AllSteps: {head: prevStep}
+            }
         default:
             return state;
     }
