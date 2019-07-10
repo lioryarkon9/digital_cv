@@ -7,7 +7,7 @@ import {MOBILE, URL_COURSE_CART_VIEW} from '../consts/consts';
 
 const MapStateToProps = state => {
     return {
-        appView: state.appView
+        appView: state.MainReducer.appView
     }
 }
 
