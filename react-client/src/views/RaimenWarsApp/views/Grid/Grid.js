@@ -1,7 +1,7 @@
 import React from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
 import {NUM_ROWS, NUM_CELLS_IN_ROW} from '../../../../consts';
 import SingleCell from '../../components/SingleCell';
+import './Grid.css';
 
 // This view displays a SingleStep (the current one)
 
@@ -36,22 +36,21 @@ class GridView extends React.Component {
         console.info('this.props: ', this.props);
         console.info('getLocationsWrappedInRows: ', this.getLocationsWrappedInRows());
         return (
-            <Container>
+            <div className='RaimenGrid'>
                 {this.getLocationsWrappedInRows().map((row, i) => (
-                    <Row key={'_row-' + i}>
+                    <div key={'_row-' + i} className='d-flex justify-content-around margin-bot-1'>
                         {row.map(cell => (
-                            <Col key={'_cell-' + cell.id}>
-                                <SingleCell
-                                    id={cell.id}
-                                    Coordinates={cell.Coordinates}
-                                    neighbours={cell.neighbours}
-                                    isStoreExist={cell.isStoreExist}
-                                />
-                            </Col>
+                            <SingleCell
+                                key={'_cell-' + cell.id}
+                                id={cell.id}
+                                Coordinates={cell.Coordinates}
+                                neighbours={cell.neighbours}
+                                isStoreExist={cell.isStoreExist}
+                            />
                         ))}
-                    </Row>
+                    </div>
                 ))}
-            </Container>
+            </div>
         );
     }
 }
