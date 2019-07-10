@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Button} from 'react-bootstrap';
 import AppWrapper from '../AppWrapper';
 import {URL_COURSE_CART_VIEW} from '../../consts';
 import GridViewContainer from '../../containers/RaimenWarsApp/Grid';
@@ -38,8 +38,13 @@ class RaimenWarsApp extends React.Component {
                 <div id='RaimenWarsApp'>
                     <Container>
                         <Row>
-                            <Col>Action1</Col>
-                            <Col>Action2</Col>
+                            <Col>
+                                <Button
+                                    onClick={e => this.props.nextStep()}
+                                >
+                                    Next step
+                                </Button>
+                            </Col>
                         </Row>
                     </Container>
                     <GridViewContainer/>

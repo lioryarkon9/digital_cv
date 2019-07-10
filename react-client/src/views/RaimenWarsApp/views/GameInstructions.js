@@ -3,7 +3,6 @@ import {Container} from 'react-bootstrap';
 
 
 const GameInstructions = props => {
-    console.info(props);
     return (
         <Container>
             <div>

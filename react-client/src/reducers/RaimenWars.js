@@ -1,7 +1,7 @@
-import {PAUSED, IN_PROGRESS, NUM_CELLS_IN_ROW, NUM_ROWS} from '../consts';
-import {RANDOMIZE_CITY, CLEAR_CITY} from '../consts/actionNames';
+import {PAUSED, NUM_CELLS_IN_ROW, NUM_ROWS} from '../consts';
+import {RANDOMIZE_CITY, CLEAR_CITY, NEXT_STEP} from '../consts/actionNames';
 import {SingleCell, SingleStep} from '../ReduxAppsLogic/RaimenWarsApp/Entities';
-import {getCellNeighbours} from '../ReduxAppsLogic/RaimenWarsApp/utils';
+import {getCellNeighbours, getNumNeighboursWithRaimen} from '../ReduxAppsLogic/RaimenWarsApp/utils';
 
 const InitState = {
     AllSteps: {head: null},
@@ -50,6 +50,33 @@ export function RaimenWarsReducer (state = InitState, action) {
                 ...state,
                 AllSteps: {head: prevStep}
             }
+        case NEXT_STEP:
+            prevStep = state.AllSteps.head;
+            const NextStep = Object.create(prevStep);
+            NextStep.AllLocations = NextStep.AllLocations.map((singleCell, i, self) => {
+                const NumNeighboursWithRaimen = getNumNeighboursWithRaimen(singleCell.neighbours, self);
+                const IsCellWithStore = singleCell.isStoreExist;
+                if ((IsCellWithStore && NumNeighboursWithRaimen < 2) || (IsCellWithStore && NumNeighboursWithRaimen > 3)) {
+                    singleCell.shutDownStore();
+                } else if ((IsCellWithStore && NumNeighboursWithRaimen === 2) || (IsCellWithStore && NumNeighboursWithRaimen === 3)) {
+                    singleCell.openStore();
+                } else if (!IsCellWithStore && NumNeighboursWithRaimen === 3) {
+                    singleCell.openStore();
+                }
+
+                return singleCell;
+            });
+
+            debugger;
+            let tmp = prevStep;
+            tmp.prev = NextStep;
+            NextStep.next = tmp;
+            prevStep = NextStep;
+
+            return {
+                ...state,
+                AllSteps: {head: prevStep}
+            }            
         default:
             return state;
     }

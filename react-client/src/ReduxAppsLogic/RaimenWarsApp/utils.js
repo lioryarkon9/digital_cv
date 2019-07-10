@@ -50,3 +50,14 @@ export function getRandomBool () {
     if (RandZeroOrOne) return true;
     else return false;
 }
+
+export function getNumNeighboursWithRaimen (neighboursCoordinates, allLocations) {
+    return neighboursCoordinates.reduce((acc, cur) => {
+        const CurNeighbour = allLocations.find(obj => obj.id === JSON.stringify(cur));
+        if (CurNeighbour.isStoreExist) {
+            acc++;
+        }
+
+        return acc;
+    }, 0);
+}
