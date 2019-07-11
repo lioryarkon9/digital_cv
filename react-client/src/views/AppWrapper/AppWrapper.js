@@ -23,6 +23,11 @@ const AppWrapper = props => {
                                         alt='img'
                                         className='arrow'
                                     />
+                                    <span
+                                        style={{fontSize: 0.7 + 'em'}}
+                                    >
+                                        back
+                                    </span>
                                 </Link>
                             : null}
                         </Col>
@@ -37,6 +42,11 @@ const AppWrapper = props => {
                                 <Link
                                     to={props.nextAppUrl}
                                 >
+                                    <span
+                                        style={{fontSize: 0.7 + 'em'}}
+                                    >
+                                        next
+                                    </span>
                                     <img
                                         src={RIGHT_ARROW}
                                         alt='img'
