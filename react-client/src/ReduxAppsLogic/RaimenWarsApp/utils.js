@@ -61,3 +61,13 @@ export function getNumNeighboursWithRaimen (neighboursCoordinates, allLocations)
         return acc;
     }, 0);
 }
+
+export function isMinOneStoreOpen (allLocations) {
+    for (let i = 0; i < allLocations.length; i++) {
+        if (allLocations[i].isStoreExist) {
+            return true;
+        }
+    }
+
+    return false;
+}

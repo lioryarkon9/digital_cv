@@ -1,4 +1,9 @@
-import {RANDOMIZE_CITY, CLEAR_CITY, NEXT_STEP} from '../consts/actionNames';
+import {
+    RANDOMIZE_CITY, 
+    CLEAR_CITY, 
+    NEXT_STEP, 
+    TOGGLE_SINGLE_CELL_STORE_STATUS
+} from '../consts/actionNames';
 
 
 export function randomizeCity () {
@@ -16,5 +21,12 @@ export function clearCity () {
 export function nextStep () {
     return {
         type: NEXT_STEP
+    }
+}
+
+export function toggleSingleCellStoreStatus (cellId) {
+    return {
+        type: TOGGLE_SINGLE_CELL_STORE_STATUS,
+        payload: cellId
     }
 }

@@ -1,7 +1,12 @@
 import {PAUSED, NUM_CELLS_IN_ROW, NUM_ROWS} from '../consts';
-import {RANDOMIZE_CITY, CLEAR_CITY, NEXT_STEP} from '../consts/actionNames';
+import {
+    RANDOMIZE_CITY, 
+    CLEAR_CITY, 
+    NEXT_STEP, 
+    TOGGLE_SINGLE_CELL_STORE_STATUS
+} from '../consts/actionNames';
 import {SingleCell, SingleStep} from '../ReduxAppsLogic/RaimenWarsApp/Entities';
-import {getCellNeighbours, getNumNeighboursWithRaimen} from '../ReduxAppsLogic/RaimenWarsApp/utils';
+import {getCellNeighbours, getNumNeighboursWithRaimen, isMinOneStoreOpen} from '../ReduxAppsLogic/RaimenWarsApp/utils';
 
 const InitState = {
     AllSteps: {head: null},
@@ -52,31 +57,52 @@ export function RaimenWarsReducer (state = InitState, action) {
             }
         case NEXT_STEP:
             prevStep = state.AllSteps.head;
-            const NextStep = Object.create(prevStep);
-            NextStep.AllLocations = NextStep.AllLocations.map((singleCell, i, self) => {
-                const NumNeighboursWithRaimen = getNumNeighboursWithRaimen(singleCell.neighbours, self);
-                const IsCellWithStore = singleCell.isStoreExist;
-                if ((IsCellWithStore && NumNeighboursWithRaimen < 2) || (IsCellWithStore && NumNeighboursWithRaimen > 3)) {
-                    singleCell.shutDownStore();
-                } else if ((IsCellWithStore && NumNeighboursWithRaimen === 2) || (IsCellWithStore && NumNeighboursWithRaimen === 3)) {
-                    singleCell.openStore();
-                } else if (!IsCellWithStore && NumNeighboursWithRaimen === 3) {
-                    singleCell.openStore();
-                }
+            const PrevStepLocations = prevStep.AllLocations;
+            if (isMinOneStoreOpen(PrevStepLocations)) {
+                const NextStep = Object.create(prevStep);
+                NextStep.next = NextStep.next; // from _proto_ to current object 
+                NextStep.prev = NextStep.prev; // from _proto_ to current object
+                NextStep.AllLocations = PrevStepLocations.map((item, i, self) => {
+                    const NextStepItem = Object.create(item);
+                    const NumNeighboursWithRaimen = getNumNeighboursWithRaimen(item.neighbours, self);
+                    const IsCellWithStore = item.isStoreExist;
+                    if ((IsCellWithStore && NumNeighboursWithRaimen < 2) || (IsCellWithStore && NumNeighboursWithRaimen > 3)) {
+                        NextStepItem.shutDownStore();
+                    } else if ((IsCellWithStore && NumNeighboursWithRaimen === 2) || (IsCellWithStore && NumNeighboursWithRaimen === 3)) {
+                        NextStepItem.openStore();
+                    } else if (!IsCellWithStore && NumNeighboursWithRaimen === 3) {
+                        NextStepItem.openStore();
+                    }
 
-                return singleCell;
-            });
-
-            debugger;
-            let tmp = prevStep;
-            tmp.prev = NextStep;
-            NextStep.next = tmp;
-            prevStep = NextStep;
+                    return NextStepItem;
+                })
+                let tmp = prevStep;
+                tmp.prev = NextStep;
+                NextStep.next = tmp;
+                prevStep = NextStep;
+            } else {
+                window.alert('cannot play without open stores');
+            }
 
             return {
                 ...state,
                 AllSteps: {head: prevStep}
-            }            
+            }     
+        case TOGGLE_SINGLE_CELL_STORE_STATUS:
+            prevStep = state.AllSteps.head;
+            const RequestedCell = prevStep.AllLocations.find(cell => cell.id === action.payload);
+            if (RequestedCell.isStoreExist) {
+                RequestedCell.shutDownStore();
+            } else {
+                RequestedCell.openStore();
+            }
+            const UpdatedGrid = Array.from(prevStep.AllLocations);
+            prevStep.AllLocations = UpdatedGrid;
+
+            return {
+                ...state,
+                AllSteps: {head: prevStep}
+            }
         default:
             return state;
     }

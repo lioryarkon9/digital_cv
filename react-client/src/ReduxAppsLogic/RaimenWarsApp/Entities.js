@@ -9,6 +9,8 @@ export class SingleCell {
         this.Coordinates = Coordinates;
         this.neighbours = neighbours ? neighbours : [];
         this.id = Coordinates ? JSON.stringify(Coordinates) : '';
+        this.openStore = this.openStore;
+        this.shutDownStore = this.shutDownStore;
     }
     openStore () {
         this.isStoreExist = true;

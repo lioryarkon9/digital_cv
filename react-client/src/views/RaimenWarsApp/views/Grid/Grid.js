@@ -1,6 +1,6 @@
 import React from 'react';
 import {NUM_ROWS, NUM_CELLS_IN_ROW} from '../../../../consts';
-import SingleCell from '../../components/SingleCell';
+import SingleCellContainer from '../../../../containers/RaimenWarsApp/SingleCell';
 import './Grid.css';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 
@@ -53,7 +53,7 @@ class GridView extends React.Component {
                                 size='sm' 
                                 onClick={this.props.randomizeCity}
                             >
-                                Ranomize city
+                                Randomize city
                             </Button>
                         </Col>
                     </Row>
@@ -62,7 +62,7 @@ class GridView extends React.Component {
                 {this.getLocationsWrappedInRows().map((row, i) => (
                     <div key={'_row-' + i} className='d-flex justify-content-around margin-bot-1'>
                         {row.map(cell => (
-                            <SingleCell
+                            <SingleCellContainer
                                 key={'_cell-' + cell.id}
                                 id={cell.id}
                                 Coordinates={cell.Coordinates}

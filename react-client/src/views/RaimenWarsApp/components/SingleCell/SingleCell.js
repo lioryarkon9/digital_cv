@@ -6,7 +6,11 @@ import DINING_ICON from '../../../../assets/dining_icon.png';
 const SingleCell = props => {
     return (
         <div className='SingleCell'>
-            <div className='img-frame' style={{backgroundColor: props.isStoreExist ? '#578a1d' : '#585555'}}>
+            <div 
+                className='img-frame' 
+                style={{backgroundColor: props.isStoreExist ? '#578a1d' : '#585555'}}
+                onClick={e => props.toggleSingleCellStoreStatus(props.id)}
+            >
                 <img 
                     src={DINING_ICON} 
                     alt='img'

@@ -39,7 +39,13 @@ const GameInstructions = props => {
                             Any ramen place in a cell that has exactly two or three neighbours cells with ramen
                             places flourishes and remains in operation.
                         </li>
+                        <li>
+                            Any empty cell, with no ramen place, that has exactly three neighbour cells with ramen
+                            places, is prime real-estate for a new ramen place that opens there immediately.
+                        </li>
                     </ul>
+                        You can always click any cell on the grid, to invert its value (shutting down an existing
+                        ramen place or opening a new one if no one is there).
                 </div>
             : null}
         </Container>
