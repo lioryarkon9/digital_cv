@@ -1,0 +1,13 @@
+#GameInstructions {
+    position: absolute;
+    width: 800px;
+    left: 50%;
+    margin-left: -400px;
+    top: 15%;
+    background-color: #fff;
+    color: black;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 2px #fff;
+    font-size: 1.2em;
+    z-index: 1;
+}

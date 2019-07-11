@@ -10,17 +10,33 @@ class RaimenWarsApp extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            moreDetails: false
+            GameInstructions: {
+                isShow: true,
+                moreDetails: false
+            }
         }
         this.toggleGameInstructions = this.toggleGameInstructions.bind(this);
+        this.toggleInstructionsDetails = this.toggleInstructionsDetails.bind(this);
     }
     toggleGameInstructions () {
-        switch (this.state.moreDetails) {
+        switch (this.state.GameInstructions.isShow) {
             case false:
-                this.setState({moreDetails: true});
+                this.setState({GameInstructions: {moreDetails: false, isShow: true}});
                 break;
             case true:
-                this.setState({moreDetails: false});
+                this.setState({GameInstructions: {moreDetails: false, isShow: false}});
+                break;
+            default:
+                return;
+        }
+    }
+    toggleInstructionsDetails () {
+        switch (this.state.GameInstructions.moreDetails) {
+            case false:
+                this.setState({GameInstructions: {moreDetails: true, isShow: true}});
+                break;
+            case true:
+                this.setState({GameInstructions: {moreDetails: false, isShow: true}});
                 break;
             default:
                 return;
@@ -31,17 +47,28 @@ class RaimenWarsApp extends React.Component {
             <AppWrapper
                 prevAppUrl={URL_COURSE_CART_VIEW}
             >
-                {this.props.appView === DESKTOP ? 
+                {this.props.appView === DESKTOP && this.state.GameInstructions.isShow ? 
                     <GameInstructions
+                        toggleInstructionsDetails={this.toggleInstructionsDetails}
+                        moreDetails={this.state.GameInstructions.moreDetails}
                         toggleGameInstructions={this.toggleGameInstructions}
-                        moreDetails={this.state.moreDetails}
                     />
                 : null}
                 
                 <div id='RaimenWarsApp'>
                     <Container>
                         <Row>
-                            <Col>
+                            <Col xs={2}>
+                                {this.props.appView === DESKTOP ?
+                                    <Button
+                                        onClick={e => this.toggleGameInstructions()}
+                                    >
+                                        {this.state.GameInstructions.isShow ? 'Hide ' : 'Show '}
+                                        Instructions
+                                    </Button>
+                                : null}
+                            </Col>
+                            <Col xs={2}>
                                 {this.props.appView === DESKTOP ?
                                     <Button
                                         onClick={e => this.props.nextStep()}

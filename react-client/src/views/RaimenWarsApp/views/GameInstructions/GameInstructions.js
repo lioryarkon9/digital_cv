@@ -1,19 +1,26 @@
 import React from 'react';
 import {Container} from 'react-bootstrap';
+import './GameInstructions.css';
 
 
 const GameInstructions = props => {
     return (
-        <Container>
+        <Container id='GameInstructions'>
+            <div 
+                style={{cursor: 'pointer', color: 'blue', textAlign: 'center'}} 
+                onClick={e => props.toggleGameInstructions()}
+            >
+                Got it
+            </div>
             <div>
                 The following app is a game called <b>Ramen Wars</b> (Ramen is a Japanese noodle dish). The game happens in Noodle
                 City, where ramen places are very much in fashion and ramen places are opened and shut down
                 continuously. 
                 <div 
                     style={{color: 'blue', cursor: 'pointer'}} 
-                    onClick={e => props.toggleGameInstructions()}
+                    onClick={e => props.toggleInstructionsDetails()}
                 >
-                    {props.moreDetails ? 'Hide' : 'Show'} game instructions
+                    {props.moreDetails ? 'Hide' : 'Show'} more details
                 </div>
             </div>
             {props.moreDetails ?
