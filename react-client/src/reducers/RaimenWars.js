@@ -60,10 +60,8 @@ export function RaimenWarsReducer (state = InitState, action) {
             const PrevStepLocations = prevStep.AllLocations;
             if (isMinOneStoreOpen(PrevStepLocations)) {
                 const NextStep = Object.create(prevStep);
-                NextStep.next = null // from _proto_ to current object 
-                NextStep.prev = null; // from _proto_ to current object
                 NextStep.AllLocations = PrevStepLocations.map((item, i, self) => {
-                    const NextStepItem = Object.create(item);
+                    const NextStepItem = new SingleCell(item.isStoreExist, item.Coordinates, item.neighbours);
                     const NumNeighboursWithRaimen = getNumNeighboursWithRaimen(item.neighbours, self);
                     const IsCellWithStore = item.isStoreExist;
                     if ((IsCellWithStore && NumNeighboursWithRaimen < 2) || (IsCellWithStore && NumNeighboursWithRaimen > 3)) {
