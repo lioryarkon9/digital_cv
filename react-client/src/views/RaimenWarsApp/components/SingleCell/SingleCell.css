@@ -12,3 +12,7 @@
     height: 30px;
     object-fit: contain;
 }
+
+.SingleCell .store-exists {
+    box-shadow: 0 0 2px 5px !important;
+}

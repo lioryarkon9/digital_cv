@@ -1,5 +1,7 @@
 .RaimenGrid {
-    margin-top: 1%;
+    margin: 1% 0.5% 0.5% 0.5%;
+    box-shadow: 0 0 2px 2px;
+    padding: 0.5% 0 0.5% 0;
 }
 
 .RaimenGrid .margin-bot-1 {
