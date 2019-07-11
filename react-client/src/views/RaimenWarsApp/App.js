@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import AppWrapper from '../AppWrapper';
-import {URL_COURSE_CART_VIEW} from '../../consts';
+import {URL_COURSE_CART_VIEW, DESKTOP} from '../../consts';
 import GridViewContainer from '../../containers/RaimenWarsApp/Grid';
 import GameInstructions from './views/GameInstructions';
 
@@ -31,19 +31,24 @@ class RaimenWarsApp extends React.Component {
             <AppWrapper
                 prevAppUrl={URL_COURSE_CART_VIEW}
             >
-                <GameInstructions
-                    toggleGameInstructions={this.toggleGameInstructions}
-                    moreDetails={this.state.moreDetails}
-                />
+                {this.props.appView === DESKTOP ? 
+                    <GameInstructions
+                        toggleGameInstructions={this.toggleGameInstructions}
+                        moreDetails={this.state.moreDetails}
+                    />
+                : null}
+                
                 <div id='RaimenWarsApp'>
                     <Container>
                         <Row>
                             <Col>
-                                <Button
-                                    onClick={e => this.props.nextStep()}
-                                >
-                                    Next step
-                                </Button>
+                                {this.props.appView === DESKTOP ?
+                                    <Button
+                                        onClick={e => this.props.nextStep()}
+                                    >
+                                        Next step
+                                    </Button>
+                                : null}
                             </Col>
                         </Row>
                     </Container>

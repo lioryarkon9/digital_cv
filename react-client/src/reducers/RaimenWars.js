@@ -60,8 +60,8 @@ export function RaimenWarsReducer (state = InitState, action) {
             const PrevStepLocations = prevStep.AllLocations;
             if (isMinOneStoreOpen(PrevStepLocations)) {
                 const NextStep = Object.create(prevStep);
-                NextStep.next = NextStep.next; // from _proto_ to current object 
-                NextStep.prev = NextStep.prev; // from _proto_ to current object
+                NextStep.next = null // from _proto_ to current object 
+                NextStep.prev = null; // from _proto_ to current object
                 NextStep.AllLocations = PrevStepLocations.map((item, i, self) => {
                     const NextStepItem = Object.create(item);
                     const NumNeighboursWithRaimen = getNumNeighboursWithRaimen(item.neighbours, self);
