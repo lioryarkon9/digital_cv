@@ -7,7 +7,7 @@ import {DESKTOP} from '../consts';
 
 const MapStateToProps = state => {
     return {
-        appView: state.appView
+        appView: state.MainReducer.appView
     }
 }
 

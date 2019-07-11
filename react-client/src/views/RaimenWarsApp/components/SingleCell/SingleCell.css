@@ -1,0 +1,14 @@
+.SingleCell .img-frame {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 2px 2px;
+    cursor: pointer;
+}
+
+.SingleCell .img-frame img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}

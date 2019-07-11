@@ -7,6 +7,7 @@ import CartView from './views/Cart';
 import './App.css';
 import WithLogic from './AppLogic/WithLogic';
 import AppWrapper from '../AppWrapper';
+import {URL_RAIMEN_WARS_VIEW} from '../../consts';
 
 
 class App extends React.Component {
@@ -34,7 +35,8 @@ class App extends React.Component {
     render () {
         return (
             <AppWrapper
-                prevAppUrl={'./'}          
+                prevAppUrl={'./'}  
+                nextAppUrl={URL_RAIMEN_WARS_VIEW}        
             >
                 <CourseCartWrapper
                     numItemsInCart={this.state.SelectedCourses.length}

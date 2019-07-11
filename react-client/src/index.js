@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 
 const Store = createStore(MainReducer);
 
-window.mockStore = Store;
+window.store = Store;
 
 ReactDOM.render(
     <Provider store={Store}>

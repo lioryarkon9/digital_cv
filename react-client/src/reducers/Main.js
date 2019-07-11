@@ -1,5 +1,7 @@
 import {DESKTOP, MOBILE, MAX_MOBILE_VIEW} from  '../consts';
 import {SET_APP_VIEW} from '../consts/actionNames';
+import {combineReducers} from 'redux';
+import RaimenWarsReducer from './RaimenWars';
 
 const InitState = {
     appView: MOBILE
@@ -18,4 +20,9 @@ const MainReducer = function (state = InitState, action) {
     }
 }
 
-export default MainReducer;
+const AllReducers = combineReducers({
+    MainReducer,
+    RaimenWarsReducer
+})
+
+export default AllReducers;
