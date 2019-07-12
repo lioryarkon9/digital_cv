@@ -10,4 +10,26 @@
     box-shadow: 0 0 2px 2px #fff;
     font-size: 1.2em;
     z-index: 1;
+    animation-name: spin;
+    -webkit-animation-name: spin;
+    animation-duration: 2s;
+    -moz-animation-duration: 2s;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
